@@ -1,6 +1,6 @@
 <?php
 
-function validaUtilizador(string $username, string $password): array|bool
+function lerUtilizadores(): array
 {
     // abrir o ficheiro no directorio superior data/utilizadores
     $futilizadores = fopen(
@@ -9,13 +9,36 @@ function validaUtilizador(string $username, string $password): array|bool
             . "utilizadores.txt",
         "r"
     );
-    while(($linha = fgets($futilizadores)) !== false) {
-        $utilizador = explode(",", $linha);
 
-        if ($username == $utilizador[0]) {
-            if (password_verify($password, $utilizador[1])) {
-                session_start();
-                $_SESSION['nome'] = $utilizador[2];
+    $utilizadores = [];
+    while(($linha = fgets($futilizadores)) !== false) {
+        $tempUtilizador = explode(";", $linha);
+
+        $utilizadores[] = [
+            'nome' => trim($tempUtilizador[2]),
+            'username' => $tempUtilizador[0],
+            'password' => $tempUtilizador[1],
+        ];
+    }
+
+    fclose($futilizadores);
+    return $utilizadores;
+}
+
+function validaUtilizador(string $username, string $password): array|bool
+{
+    // abrir o ficheiro no directorio superior data/utilizadores
+    $utilizadores = lerUtilizadores();
+    
+    foreach ($utilizadores as $utilizador) {
+        if ($username == $utilizador['username']) {
+            if (password_verify($password, $utilizador['password'])) {
+                @session_start();
+                $_SESSION['nome'] = $utilizador['nome'];
+                setcookie('tarefaslogin', json_encode([
+                    'utilizador' => $username,
+                    'password' => $password,
+                ]), time()+ 60);
                 return $utilizador;
             } else {
                 return false;
@@ -30,8 +53,8 @@ function validaSessao(): bool
 {
     @session_start();
     if (empty($_SESSION) || empty($_SESSION['nome'])) {
-        if (isset($_COOKIE['gestoeslogin'])) {
-            $dadosCookie = json_decode($_COOKIE['gestoeslogin'], true);
+        if (isset($_COOKIE['tarefaslogin'])) {
+            $dadosCookie = json_decode($_COOKIE['tarefaslogin'], true);
             $utilizador = validaUtilizador($dadosCookie['utilizador'], $dadosCookie['password']);
             return is_array($utilizador) ? true : $utilizador;
         } else {
