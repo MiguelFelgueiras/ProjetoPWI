@@ -92,7 +92,7 @@ function obtemUtilizador(string $username): array|bool
 
 function adicionarUtilizador(string $username, string $nome, string $password): array|bool
 {
-    if (obtemUtilizador($username) === false) {
+    if (obtemUtilizador($username) !== false) {
         return false;
     }
 
@@ -103,7 +103,7 @@ function adicionarUtilizador(string $username, string $nome, string $password): 
         'a'
     );
 
-    $resultado = fputs($futilizadores, $username . ',' . password_hash($password, PASSWORD_DEFAULT) . ',' . $nome . "\n");
+    $resultado = fputs($futilizadores, $username . ';' . password_hash($password, PASSWORD_DEFAULT) . ';' . $nome . "\n");
     fclose($futilizadores);
     
     if ($resultado === false) {
@@ -148,8 +148,8 @@ function escreverUtilizadores(array $utilizadores): bool
     foreach($utilizadores as $utilizador) {
         fputs(
             $futilizadores,
-            $utilizador['username'] . ','
-            . $utilizador['password'] . ','
+            $utilizador['username'] . ';'
+            . $utilizador['password'] . ';'
             . $utilizador['nome'] . "\n"
         );
     }
