@@ -2,7 +2,7 @@
     include_once 'lib' . DIRECTORY_SEPARATOR . 'utilizadores_lib.php';
 
     if (!empty($_POST)) {
-        if (($utilizador = validaUtilizador($_POST['email'], $_POST['password'])) !== false){
+        if (($utilizador = validaUtilizador($_POST['username'], $_POST['password'])) !== false){
             header('Location: home.php');
         } else {
             $message = "Utilizador ou palavra-passe errada";
@@ -32,9 +32,9 @@
 
         <form action="login.php" method="post" class="">
             <div class="row justify-content-center mt-3">
-                <label for="" class="col-2 text-end fw-bold">Email</label>
+                <label for="" class="col-2 text-end fw-bold">Username</label>
                 <div class="col-4">
-                    <input type="text" name="email" id="">
+                    <input type="text" name="username" id="">
                 </div>
             </div>
             

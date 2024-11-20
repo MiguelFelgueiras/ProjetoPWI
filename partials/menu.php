@@ -10,7 +10,7 @@
           <a class="nav-link active" aria-current="page" href="home.php">Ínicio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Utilizadores</a>
+          <a class="nav-link" href="utilizadores.php">Utilizadores</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="logout.php">Terminar Sessão</a>
