@@ -1,3 +1,4 @@
 jose;$2y$10$Mf078liAa/e6mMeQUlChuu0T3X12Bf/5OOdhzPxSmSz8H2L.dwAGe;José Pedro
 admin;34b8b316855f374e8df49e496cc696d6;Admnistrador
 afonso;$2y$10$Y2nZWIosgJ/4.fWDSpThx.m35.OgmdLpMEXM/JB8AW0ltQ4azHJ4W;Afonso Pereira
+rui;$2y$10$rnObq8HijC0ThcE0cbrjOOZhP2l9Jb49rYkMoTIMe6d/ZSmNsPFz.;Rui Costa
