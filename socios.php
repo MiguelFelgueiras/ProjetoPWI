@@ -1,4 +1,5 @@
 <?php
+    include_once 'lib' . DIRECTORY_SEPARATOR . 'utilizadores_lib.php';
     include_once 'lib' . DIRECTORY_SEPARATOR . 'socios_lib.php';
 
     if (!validaSessao()) {
