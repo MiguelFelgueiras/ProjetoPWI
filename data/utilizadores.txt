@@ -1,4 +1,5 @@
-jose;$2y$10$Mf078liAa/e6mMeQUlChuu0T3X12Bf/5OOdhzPxSmSz8H2L.dwAGe;José Melo
-admin;34b8b316855f374e8df49e496cc696d6;Admnistrador
-afonso;$2y$10$Y2nZWIosgJ/4.fWDSpThx.m35.OgmdLpMEXM/JB8AW0ltQ4azHJ4W;Afonso Pereira
-rui;$2y$10$rnObq8HijC0ThcE0cbrjOOZhP2l9Jb49rYkMoTIMe6d/ZSmNsPFz.;Rui Costa
+1;jose;$2y$10$Mf078liAa/e6mMeQUlChuu0T3X12Bf/5OOdhzPxSmSz8H2L.dwAGe;José Melo
+2;admin;34b8b316855f374e8df49e496cc696d6;Admnistrador
+3;afonso;$2y$10$Y2nZWIosgJ/4.fWDSpThx.m35.OgmdLpMEXM/JB8AW0ltQ4azHJ4W;Afonso Pereira
+4;rui;$2y$10$rnObq8HijC0ThcE0cbrjOOZhP2l9Jb49rYkMoTIMe6d/ZSmNsPFz.;Rui Costa
+5;rita;$2y$10$4bPhxq52Nl64knbt05zrIurLXHh.ipl5UKHHYrJEOT4WqU0P2AnTm;Rita Albito

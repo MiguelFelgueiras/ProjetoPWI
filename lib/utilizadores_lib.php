@@ -15,14 +15,26 @@ function lerUtilizadores(): array
         $tempUtilizador = explode(";", $linha);
 
         $utilizadores[] = [
-            'nome' => trim($tempUtilizador[2]),
-            'username' => $tempUtilizador[0],
-            'password' => $tempUtilizador[1],
+            'idUtilizador' => $tempUtilizador[0],
+            'nome' => trim($tempUtilizador[3]),
+            'username' => $tempUtilizador[1],
+            'password' => $tempUtilizador[2],
         ];
     }
 
     fclose($futilizadores);
     return $utilizadores;
+}
+
+function obtemProximoIdUser(): int
+{
+    $utilizadores = lerUtilizadores();
+
+    if (count($utilizadores) == 0) {
+        return 1;
+    }
+
+    return $utilizadores[count($utilizadores)-1]['idUtilizador'] + 1;
 }
 
 function validaUtilizador(string $username, string $password): array|bool
@@ -96,6 +108,8 @@ function adicionarUtilizador(string $username, string $nome, string $password): 
         return false;
     }
 
+    $idUtilizador=obtemProximoIdUser();
+
     $futilizadores = fopen(
         "data"
             . DIRECTORY_SEPARATOR
@@ -103,7 +117,7 @@ function adicionarUtilizador(string $username, string $nome, string $password): 
         'a'
     );
 
-    $resultado = fputs($futilizadores, $username . ';' . password_hash($password, PASSWORD_DEFAULT) . ';' . $nome . "\n");
+    $resultado = fputs($futilizadores, $idUtilizador . ';' . $username . ';' . password_hash($password, PASSWORD_DEFAULT) . ';' . $nome . "\n");
     fclose($futilizadores);
     
     if ($resultado === false) {
@@ -111,6 +125,7 @@ function adicionarUtilizador(string $username, string $nome, string $password): 
     }
 
     return [
+        $idUtilizador,
         $username,
         password_hash($password, PASSWORD_DEFAULT),
         $nome

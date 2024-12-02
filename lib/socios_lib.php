@@ -43,7 +43,7 @@ function obtemSocios(string $idSocio): array|bool
     return false;
 }
 
-function obtemProximoId(): int
+function obtemProximoIdSocio(): int
 {
     $socios = lerSocios();
 
@@ -56,7 +56,7 @@ function obtemProximoId(): int
 
 function adicionarSocio(string $nome, string $nif, string $nascimento, string $morada, string $codPostal,string $localidade,string $email,string $sexo,string $situacao): array|bool
 {
-    $idSocio = obtemProximoId();
+    $idSocio = obtemProximoIdSocio();
     
     $fsocios = fopen(
         "data"
