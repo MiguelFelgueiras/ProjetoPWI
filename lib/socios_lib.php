@@ -31,11 +31,12 @@ function lerSocios(): array
     return $socios;
 }
 
+
 function obtemSocios(string $idSocio): array|bool
 {
-    $socios = lerUtilizadores();
+    $socios = lerSocios();
     foreach ($socios as $socio) {
-        if ($socios['idSocio'] == $idSocio) {
+        if ($socio['idSocio'] == $idSocio) {
             return $socio;
         }
     }

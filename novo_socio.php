@@ -103,7 +103,8 @@
             <div class="col-4">
                 <select id="situacao" name="situacao">
                     <option value="Ativo">Ativo</option>
-                    <option value="Inativo">Inativo</option>
+                    <option value="Suspenso">Suspenso</option>
+                    <option value="Pendente">Pendente</option>
                 </select>
             </div>
         </div>

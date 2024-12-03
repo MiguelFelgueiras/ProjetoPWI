@@ -24,7 +24,7 @@
             <div class="card">
                 <h5 class="card-header">Dados de Utilizador</h5>
                 <div class="card-body">
-                    <h5 class="card-title"><?php echo $utilizador['nome'];?></h5>
+                    <h5 class="card-title">Nome: <?php echo $utilizador['nome'];?></h5>
                     <p class="text-center">
                     <a href="modificar_utilizador.php?username=<?php echo $utilizador['username'];?>" class="btn btn-primary">Modificar</a>
                     </p>
