@@ -8,7 +8,7 @@
 
     if (!empty($_POST)) {
         $utilizador = obtemUtilizador($_GET['username']);
-        $ret = modificarUtilizador($_GET['username'], $_POST['name'], $_POST['password']);
+        $ret = modificarUtilizador($_GET['username'], $_POST['name'], $_POST['password'],$_POST['situacao']);
         if ($ret === false) {
             $message = 'Não foi possivel modificar o utilizador';
             $class = "danger";
@@ -58,7 +58,17 @@
                 <input type="password" name="password" id="" autocomplete="new-password">
             </div>
         </div>
-        
+
+        <div class="row justify-content-center mt-3">
+            <label for="situacao" class="col-2 text-end fw-bold">Situação</label>
+            <div class="col-4">
+                <select id="situacao" name="situacao">
+                    <option value="1">Ativo</option>
+                    <option value="0">Inativo</option>
+                </select>
+            </div>
+        </div>
+
         <div class="row justify-content-center mt-3">
             <div class="col text-center">
                 <input  class="btn btn-success btn-large" type="submit" value="Modificar Utilizador" name="form_b">

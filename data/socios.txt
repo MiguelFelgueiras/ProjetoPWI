@@ -1,3 +1,4 @@
 1;Jorge Pimentel;250250250;24/03/1990;Rua José Manuel;9500-500;Fajã de Baixo;jorge@gmail.com;Masculino;Ativo
 2;Afonso Correia;200200200;2002-12-02;Rua do Afonso;9000-400;Pico do Lajedo;umemailaocalhas@gmail.com;Masculino;Ativo
 3;Rita Dias;200203221;2000-12-12;Rua da Rita;9000-200;Pico do Lajedo;emailrandom@gmail.com;Feminino;Ativo
+4;Manuel Pinto;222222222;1999-06-09;Rua do Manuel;9000-300;Pico do Lajedo;manuel@gmail.com;Masculino;Pendente

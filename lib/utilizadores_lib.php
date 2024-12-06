@@ -19,6 +19,7 @@ function lerUtilizadores(): array
             'nome' => trim($tempUtilizador[3]),
             'username' => $tempUtilizador[1],
             'password' => $tempUtilizador[2],
+            'situacao' => $tempUtilizador[4]
         ];
     }
 
@@ -108,8 +109,6 @@ function adicionarUtilizador(string $username, string $nome, string $password): 
         return false;
     }
 
-    $idUtilizador=obtemProximoIdUser();
-
     $futilizadores = fopen(
         "data"
             . DIRECTORY_SEPARATOR
@@ -117,7 +116,8 @@ function adicionarUtilizador(string $username, string $nome, string $password): 
         'a'
     );
 
-    $resultado = fputs($futilizadores, $idUtilizador . ';' . $username . ';' . password_hash($password, PASSWORD_DEFAULT) . ';' . $nome . "\n");
+    $idUtilizador=obtemProximoIdUser();
+    $resultado = fputs($futilizadores, $idUtilizador . ';' . $username . ';' . password_hash($password, PASSWORD_DEFAULT) . ';' . $nome . ';' . 1 . "\n");
     fclose($futilizadores);
     
     if ($resultado === false) {
@@ -128,11 +128,12 @@ function adicionarUtilizador(string $username, string $nome, string $password): 
         $idUtilizador,
         $username,
         password_hash($password, PASSWORD_DEFAULT),
-        $nome
+        $nome,
+        1
     ];
 }
 
-function modificarUtilizador(string $username, string $nome, string $password): bool
+function modificarUtilizador(string $username, string $nome, string $password, int $situacao): bool
 {
     $utilizadores = lerUtilizadores();
     foreach ($utilizadores as $pos => $utilizador) {
@@ -141,7 +142,7 @@ function modificarUtilizador(string $username, string $nome, string $password): 
             if ($password != '') {
                 $utilizadores[$pos]['password'] = password_hash($password, PASSWORD_DEFAULT);
             }
-
+            $utilizadores[$pos]['situacao'] = $situacao;
             escreverUtilizadores($utilizadores);
             return true;
         }
@@ -163,9 +164,11 @@ function escreverUtilizadores(array $utilizadores): bool
     foreach($utilizadores as $utilizador) {
         fputs(
             $futilizadores,
-            $utilizador['username'] . ';'
+            $utilizador['idUtilizador'] . ';'
+            . $utilizador['username'] . ';'
             . $utilizador['password'] . ';'
-            . $utilizador['nome'] . "\n"
+            . $utilizador['nome'] . ';'
+            . $utilizador['situacao']
         );
     }
 

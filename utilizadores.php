@@ -32,6 +32,7 @@
                     <tr>
                         <th>Nome</th>
                         <th>Username</th>
+                        <th>Situação</th>
                         <th class="text-end">Ações</th>
                     </tr>
                 </thead>
@@ -42,6 +43,7 @@
                             <tr>
                                 <td><?php echo $utilizador['nome'];?></td>
                                 <td><?php echo $utilizador['username'];?></td>
+                                <td><?php echo $utilizador['situacao'];?></td>
                                 <td class="text-end">
                                     <a href="ver_utilizador.php?username=<?php echo $utilizador['username'];?>" class="btn btn-secondary">
                                         <i class="fa-solid fa-info fa-fw"></i>

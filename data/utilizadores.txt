@@ -1,6 +1,9 @@
-1;jose;$2y$10$Mf078liAa/e6mMeQUlChuu0T3X12Bf/5OOdhzPxSmSz8H2L.dwAGe;José Melo
-2;admin;34b8b316855f374e8df49e496cc696d6;Admnistrador
-3;afonso;$2y$10$Y2nZWIosgJ/4.fWDSpThx.m35.OgmdLpMEXM/JB8AW0ltQ4azHJ4W;Afonso Pereira
-4;rui;$2y$10$rnObq8HijC0ThcE0cbrjOOZhP2l9Jb49rYkMoTIMe6d/ZSmNsPFz.;Rui Costa
-5;rita;$2y$10$4bPhxq52Nl64knbt05zrIurLXHh.ipl5UKHHYrJEOT4WqU0P2AnTm;Rita Albito
-6;alexandre;$2y$10$v6hEh4PLwW/AHm.YYEeUI.MN0FMZnpR/HdbG4CwSVxA6Bdb7dugY.;Alexandre Costa
+1;jose;$2y$10$Mf078liAa/e6mMeQUlChuu0T3X12Bf/5OOdhzPxSmSz8H2L.dwAGe;José Melo;1
+2;admin;34b8b316855f374e8df49e496cc696d6;Admnistrador;1
+3;afonso;$2y$10$Y2nZWIosgJ/4.fWDSpThx.m35.OgmdLpMEXM/JB8AW0ltQ4azHJ4W;Afonso Pereira;1
+4;rui;$2y$10$rnObq8HijC0ThcE0cbrjOOZhP2l9Jb49rYkMoTIMe6d/ZSmNsPFz.;Rui Costa;1
+5;rita;$2y$10$4bPhxq52Nl64knbt05zrIurLXHh.ipl5UKHHYrJEOT4WqU0P2AnTm;Rita Almeida;1
+6;alexandra;$2y$10$v6hEh4PLwW/AHm.YYEeUI.MN0FMZnpR/HdbG4CwSVxA6Bdb7dugY.;Alexandra Rodrigues;0
+7;manuelTeste;$2y$10$MfAcamspxWmawmfnIC1fJep1eYnu8oq7LMfBQERgo0PhmGTiLdS7S;Manuel Pinto;1
+8;joseSegundo;$2y$10$LFzS11vnX7DDPT4o8JzFLuEsMRAnPrZoJ8xWGcqceSuM.LolsHRuq;José Manuel;1
+9;jorgedostestes;$2y$10$yztMKG3H6bnwv.JH6A070OawiTxor6KJzWEbv6iZ4okCuU4A.sJ6.;Jorge Kleptamino;1
