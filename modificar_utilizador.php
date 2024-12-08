@@ -76,3 +76,5 @@
         </div>
     </form>
 </div>
+
+<?php include_once 'partials' . DIRECTORY_SEPARATOR . 'footer.php'; ?>

@@ -12,6 +12,7 @@ function lerUtilizadores(): array
 
     $utilizadores = [];
     while(($linha = fgets($futilizadores)) !== false) {
+        $linha = trim($linha);
         $tempUtilizador = explode(";", $linha);
 
         $utilizadores[] = [
@@ -168,7 +169,7 @@ function escreverUtilizadores(array $utilizadores): bool
             . $utilizador['username'] . ';'
             . $utilizador['password'] . ';'
             . $utilizador['nome'] . ';'
-            . $utilizador['situacao']
+            . $utilizador['situacao'] . "\n"
         );
     }
 

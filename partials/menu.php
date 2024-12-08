@@ -18,6 +18,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="cobrancas.php">Cobranças</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="logout.php">Terminar Sessão</a>
+                </li>
             </ul>
         </div>
     </div>
