@@ -29,3 +29,15 @@ function lerCobrancas(): array
     fclose($fcobrancas);
     return $cobrancas;
 }
+
+function obtemCobrancas(string $idCobranca): array|bool
+{
+    $cobrancas = lerCobrancas();
+    foreach ($cobrancas as $cobranca) {
+        if ($cobranca['idCobranca'] == $idCobranca) {
+            return $cobranca;
+        }
+    }
+
+    return false;
+}

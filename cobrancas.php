@@ -54,10 +54,10 @@
                                 <td><?php echo $cobranca['tipo'];?></td>
                                 <td><?php echo $cobranca['dataPagamento'];?></td>
                                 <td class="text-end">
-                                    <a href="ver_cobranca.php?username=<?php echo $cobranca['idCobranca'];?>" class="btn btn-secondary">
+                                    <a href="ver_cobranca.php?idCobranca=<?php echo $cobranca['idCobranca'];?>" class="btn btn-secondary">
                                         <i class="fa-solid fa-info fa-fw"></i>
                                     </a>
-                                    <a href="modificar_modificar.php?username=<?php echo $cobranca['idCobranca'];?>" class="btn btn-warning">
+                                    <a href="modificar_modificar.php?idCobranca=<?php echo $cobranca['idCobranca'];?>" class="btn btn-warning">
                                         <i class="fa-solid fa-user-pen fa-fw"></i>
                                     </a>
                                 </td>
