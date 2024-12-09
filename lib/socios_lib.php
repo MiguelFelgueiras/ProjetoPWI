@@ -1,6 +1,9 @@
 <?php
-function lerSocios(): array
+function lerSocios(string $pesquisa = ''): array
 {
+    if (!file_exists( "data" . DIRECTORY_SEPARATOR . "socios.txt")) {
+        return [];
+    }
     // abrir o ficheiro no directorio superior data/socios
     $fsocios = fopen(
             "data"
@@ -18,17 +21,26 @@ function lerSocios(): array
             continue; // Ignorar linhas malformadas
         }
 
+        // Verificar o filtro de pesquisa em todos os campos
+        if (!empty($pesquisa)) {
+            // Concatenar todos os campos e verificar a presença da pesquisa
+            $todosCampos = implode(' ', array_map('trim', $tempSocio));
+            if (stripos($todosCampos, $pesquisa) === false) {
+                continue; // Ignorar sócios que não correspondem à pesquisa
+        }
+        }
+
         $socios[] = [
-            'idSocio' => $tempSocio[0],
+            'idSocio' => trim($tempSocio[0]),
             'nome' => trim($tempSocio[1]),
-            'nif' => $tempSocio[2],
-            'nascimento' => $tempSocio[3],
-            'morada' => $tempSocio[4],
-            'codPostal' => $tempSocio[5],
-            'localidade' => $tempSocio[6],
-            'email' => $tempSocio[7],
-            'sexo' => $tempSocio[8],
-            'situacao' => $tempSocio[9],
+            'nif' => trim($tempSocio[2]),
+            'nascimento' => trim($tempSocio[3]),
+            'morada' => trim($tempSocio[4]),
+            'codPostal' => trim($tempSocio[5]),
+            'localidade' => trim($tempSocio[6]),
+            'email' => trim($tempSocio[7]),
+            'sexo' => trim($tempSocio[8]),
+            'situacao' => trim($tempSocio[9]),
         ];
     }
 

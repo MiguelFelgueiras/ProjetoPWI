@@ -42,7 +42,7 @@
         <div class="row justify-content-center mt-3">
             <label for="" class="col-2 text-end fw-bold">Nome</label>
             <div class="col-4">
-                <input type="text" name="name" id="">
+                <input type="text" name="name" id="" required>
             </div>
         </div>
 
@@ -63,35 +63,35 @@
         <div class="row justify-content-center mt-3">
             <label for="" class="col-2 text-end fw-bold">Morada</label>
             <div class="col-4">
-                <input type="text" name="morada" id="">
+                <input type="text" name="morada" id="" required>
             </div>
         </div>
 
         <div class="row justify-content-center mt-3">
             <label for="" class="col-2 text-end fw-bold">Código Postal</label>
             <div class="col-4">
-                <input type="text" maxlength="8" placeholder="####-###" name="codPostal" id="">
+                <input type="text" maxlength="8" placeholder="####-###" name="codPostal" id="" required>
             </div>
         </div>
 
         <div class="row justify-content-center mt-3">
             <label for="" class="col-2 text-end fw-bold">Localidade</label>
             <div class="col-4">
-                <input type="text" name="localidade" id="">
+                <input type="text" name="localidade" id="" required>
             </div>
         </div>
 
         <div class="row justify-content-center mt-3">
             <label for="" class="col-2 text-end fw-bold">Email</label>
             <div class="col-4">
-                <input type="email" name="email" id="">
+                <input type="email" name="email" id="" required>
             </div>
         </div>
 
         <div class="row justify-content-center mt-3">
             <label for="sexo" class="col-2 text-end fw-bold">Sexo</label>
             <div class="col-4">
-                <select id="sexo" name="sexo">
+                <select id="sexo" name="sexo" required>
                     <option value="Masculino">Masculino</option>
                     <option value="Feminino">Feminino</option>
                 </select>
@@ -101,10 +101,10 @@
         <div class="row justify-content-center mt-3">
             <label for="situacao" class="col-2 text-end fw-bold">Situação</label>
             <div class="col-4">
-                <select id="situacao" name="situacao">
+                <select id="situacao" name="situacao" required>
                     <option value="Ativo">Ativo</option>
                     <option value="Suspenso">Suspenso</option>
-                    <option value="Pendente">Pendente</option>
+                    <option value="Pendente" selected="selected">Pendente</option>
                 </select>
             </div>
         </div>
