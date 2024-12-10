@@ -57,7 +57,7 @@
                                     <a href="ver_cobranca.php?idCobranca=<?php echo $cobranca['idCobranca'];?>" class="btn btn-secondary">
                                         <i class="fa-solid fa-info fa-fw"></i>
                                     </a>
-                                    <a href="modificar_modificar.php?idCobranca=<?php echo $cobranca['idCobranca'];?>" class="btn btn-warning">
+                                    <a href="modificar_cobranca.php?idCobranca=<?php echo $cobranca['idCobranca'];?>" class="btn btn-warning">
                                         <i class="fa-solid fa-user-pen fa-fw"></i>
                                     </a>
                                 </td>

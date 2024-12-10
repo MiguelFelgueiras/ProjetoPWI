@@ -30,7 +30,7 @@ function lerCobrancas(): array
     return $cobrancas;
 }
 
-function obtemCobrancas(string $idCobranca): array|bool
+function obtemCobranca(string $idCobranca): array|bool
 {
     $cobrancas = lerCobrancas();
     foreach ($cobrancas as $cobranca) {
@@ -40,4 +40,46 @@ function obtemCobrancas(string $idCobranca): array|bool
     }
 
     return false;
+}
+
+function modificarCobranca(string $idCobranca, string $valor, string $situacao, string $tipo): bool
+{
+    $cobrancas = lerCobrancas();
+    foreach ($cobrancas as $pos => $cobranca) {
+        if ($cobranca['idCobranca'] == $idCobranca) {
+            $cobrancas[$pos]['valor'] = $valor;
+            $cobrancas[$pos]['situacao'] = $situacao;
+            $cobrancas[$pos]['tipo'] = $tipo;
+            escreverCobranca($cobrancas);
+            return true;
+        }
+    }
+    return false;
+}
+
+function escreverCobranca(array $cobrancas): bool
+{
+    // abrir o ficheiro no directorio superior data/cobrancas, no modo de escrita
+    $fcobrancas = fopen(
+            "data"
+            . DIRECTORY_SEPARATOR
+            . "cobrancas.txt",
+        "w"
+    );
+
+    foreach($cobrancas as $cobranca) {
+        fputs(
+            $fcobrancas,
+            $cobranca['idCobranca'] . ';'
+            . $cobranca['dataEmissao'] . ';'
+            . $cobranca['idSocio'] . ';'
+            . $cobranca['valor'] . ';'
+            . $cobranca['situacao'] . ';'
+            . $cobranca['tipo'] . ';'
+            . $cobranca['dataPagamento'] . "\n"
+        );
+    }
+
+    fclose($fcobrancas);
+    return true;
 }

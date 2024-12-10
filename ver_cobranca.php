@@ -13,7 +13,7 @@
 
 <div class="container pt-5">
     <?php
-        $cobranca = obtemCobrancas($_GET['idCobranca']);
+        $cobranca = obtemCobranca($_GET['idCobranca']);
         if ($cobranca === false) { ?>
             <div class="row">
                 <div class="col">
