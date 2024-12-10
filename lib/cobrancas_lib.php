@@ -83,3 +83,46 @@ function escreverCobranca(array $cobrancas): bool
     fclose($fcobrancas);
     return true;
 }
+
+function obtemProximoIdCobranca(): int
+{
+    $cobrancas = lerCobrancas();
+
+    if (count($cobrancas) == 0) {
+        return 1;
+    }
+
+    return $cobrancas[count($cobrancas)-1]['idCobranca'] + 1;
+}
+
+function emitirCobranca(string $idSocio, string $valor, string $tipo): array|bool
+{
+    $idCobranca = obtemProximoIdCobranca();
+    
+    $fcobrancas = fopen(
+        "data"
+            . DIRECTORY_SEPARATOR
+            . "cobrancas.txt",
+        'a'
+    );
+
+    $cobranca = [
+        $idCobranca,
+        date('Y-m-d H:i:s'),
+        $idSocio,
+        $valor,
+        'PENDENTE',
+        $tipo,
+        ''
+    ];
+
+    $resultado = fputs($fcobrancas, implode(';', $cobranca) . "\n");
+    fclose($fcobrancas);
+    
+    if ($resultado === false) {
+        return false;
+    }
+
+    return $cobranca;
+
+}
