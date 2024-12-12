@@ -58,8 +58,7 @@
             <div class="col-4">
                 <select id="tipo" name="tipo" required>
                     <option value="JOIA">Jóia</option>
-                    <option value="QUOTA">Quota</option>
-                    <option value="none" selected disabled hidden></option>
+                    <option value="QUOTA" selected>Quota</option>
                 </select>
             </div>
         </div>

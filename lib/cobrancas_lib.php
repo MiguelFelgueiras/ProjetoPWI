@@ -1,8 +1,16 @@
 <?php
 
-function lerCobrancas(): array
+include_once 'lib' . DIRECTORY_SEPARATOR . 'socios_lib.php';
+
+/**
+ * Lê um ficheiro com dados de cobranças, aplica filtros opcionais de pesquisa e retorna um array com os dados.
+ *
+ * @param string $pesquisa
+ * @return array
+ */
+function lerCobrancas(string $pesquisa = ''): array
 {
-    // abrir o ficheiro no directorio superior data/utilizadores
+    // abrir o ficheiro no directorio superior data/cobrancas
     $fcobrancas = fopen(
             "data"
             . DIRECTORY_SEPARATOR
@@ -14,6 +22,14 @@ function lerCobrancas(): array
     while(($linha = fgets($fcobrancas)) !== false) {
         $linha = trim($linha);
         $tempCobranca = explode(";", $linha);
+
+        if (count($tempCobranca) < 7){
+            continue;
+        }
+
+        if (!empty($pesquisa) && (stripos($tempCobranca[1], $pesquisa) === false) && (stripos($tempCobranca[2], $pesquisa) === false) && (stripos($tempCobranca[4], $pesquisa) === false)) {
+            continue;
+        }
 
         $cobrancas[] = [
             'idCobranca' => $tempCobranca[0],
@@ -30,6 +46,12 @@ function lerCobrancas(): array
     return $cobrancas;
 }
 
+/**
+ * Obtém uma cobrança específica pelo ID
+ *
+ * @param string $idCobranca
+ * @return array|boolean
+ */
 function obtemCobranca(string $idCobranca): array|bool
 {
     $cobrancas = lerCobrancas();
@@ -42,6 +64,15 @@ function obtemCobranca(string $idCobranca): array|bool
     return false;
 }
 
+/**
+ * Atualiza os dados de uma cobrança específica no ficheiro
+ *
+ * @param string $idCobranca
+ * @param string $valor
+ * @param string $situacao
+ * @param string $tipo
+ * @return boolean
+ */
 function modificarCobranca(string $idCobranca, string $valor, string $situacao, string $tipo): bool
 {
     $cobrancas = lerCobrancas();
@@ -57,6 +88,12 @@ function modificarCobranca(string $idCobranca, string $valor, string $situacao, 
     return false;
 }
 
+/**
+ * Sobrescreve o ficheiro de cobranças com um novo conjunto de dados
+ *
+ * @param array $cobrancas
+ * @return boolean
+ */
 function escreverCobranca(array $cobrancas): bool
 {
     // abrir o ficheiro no directorio superior data/cobrancas, no modo de escrita
@@ -84,6 +121,11 @@ function escreverCobranca(array $cobrancas): bool
     return true;
 }
 
+/**
+ * Calcula o próximo ID da cobrancça com base no último ID presente no array de cobranças
+ *
+ * @return integer
+ */
 function obtemProximoIdCobranca(): int
 {
     $cobrancas = lerCobrancas();
@@ -95,6 +137,14 @@ function obtemProximoIdCobranca(): int
     return $cobrancas[count($cobrancas)-1]['idCobranca'] + 1;
 }
 
+/**
+ * Cria e grava uma nova cobrança no ficheiro, associando-a a um sócio
+ *
+ * @param string $idSocio
+ * @param string $valor
+ * @param string $tipo
+ * @return array|boolean
+ */
 function emitirCobranca(string $idSocio, string $valor, string $tipo): array|bool
 {
     $idCobranca = obtemProximoIdCobranca();

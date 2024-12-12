@@ -18,6 +18,19 @@
         </div>
     </div>
 
+    <form action="cobrancas.php" method="post" class="mt-3 mb-3">
+        <div class="row">
+            <div class="col-8">
+                <input type="text" name="pesquisa" id="" class="form-control" placeholder="Filtrar Resultados">
+            </div>
+            <div class="col-2">
+                <input type="submit" value="Filtrar" name="search_b" class="btn btn-secondary col-12">
+            </div>
+        </div>
+        
+    </form>
+    <hr>
+
     <div class="row">
         <div class="col text-end">
             <a href="nova_cobranca.php" class="btn btn-primary">
@@ -43,7 +56,7 @@
                 </thead>
                 <tbody>
                     <?php
-                        $cobrancas = lerCobrancas();
+                        $cobrancas = lerCobrancas($_POST['pesquisa'] ?? '');
                         foreach ($cobrancas as $cobranca) { ?>
                             <tr>
                                 <td><?php echo $cobranca['idCobranca'];?></td>

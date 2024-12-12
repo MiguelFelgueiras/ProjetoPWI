@@ -4,3 +4,6 @@
 4;Manuel Pinto;222222222;1999-06-09;Rua do Manuel;9000-300;Pico do Lajedo;manuel@gmail.com;Masculino;Pendente
 5;João Melo;200250221;1993-06-15;Rua do Manuel;9200-243;Pico do Lajedo;joaoemails@gmail.com;Masculino;Ativo
 6;Jorge Sousa;203231234;2004-02-03;Rua da Maria;9400-278;Pico do Lajedo;emailnovoparaumjorge@gmail.com;Masculino;Pendente
+7;Miguel Costa;243233211;1987-03-12;Rua do JORGE;9600-454;Ponta Delgada;umemailaocalhasparaomiguel@gmail.com;Masculino;Pendente
+8;Miguel Costa;243233211;1987-03-12;Rua do JORGE;9600-454;Ponta Delgada;umemailaocalhasparaomiguel@gmail.com;Masculino;Pendente
+9;Rui Nurencia;203023421;1976-03-12;Rua da Maria;9300-245;Ponta Delgada;ruinurencia@gmail.com;Masculino;Pendente

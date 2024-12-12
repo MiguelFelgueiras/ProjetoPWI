@@ -40,21 +40,21 @@
         <div class="row justify-content-center mt-3">
             <label for="" class="col-2 text-end fw-bold">Username</label>
             <div class="col-4">
-                <input type="text" name="username" id="">
+                <input type="text" name="username" id="" required>
             </div>
         </div>
         
         <div class="row justify-content-center mt-3">
             <label for="" class="col-2 text-end fw-bold">Nome</label>
             <div class="col-4">
-                <input type="text" name="name" id="">
+                <input type="text" name="name" id="" required>
             </div>
         </div>
 
         <div class="row justify-content-center mt-3">
             <label for="" class="col-2 text-end fw-bold">Password</label>
             <div class="col-4">
-                <input type="password" name="password" id="">
+                <input type="password" name="password" id="" required>
             </div>
         </div>
         

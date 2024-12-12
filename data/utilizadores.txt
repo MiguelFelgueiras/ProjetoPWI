@@ -7,3 +7,4 @@
 7;manuelTeste;$2y$10$MfAcamspxWmawmfnIC1fJep1eYnu8oq7LMfBQERgo0PhmGTiLdS7S;Manuel Pinto;1
 8;joseSegundo;$2y$10$LFzS11vnX7DDPT4o8JzFLuEsMRAnPrZoJ8xWGcqceSuM.LolsHRuq;José Manuel;1
 9;jorgedostestes;$2y$10$yztMKG3H6bnwv.JH6A070OawiTxor6KJzWEbv6iZ4okCuU4A.sJ6.;Jorge Kleptamino;1
+10;Reticiolito;$2y$10$/zvnZVWVYtg9j0SBqy3ikeznzGm6Bwqi5WIJiakDBreW2J5C9GR4S;Rui Corelo;1

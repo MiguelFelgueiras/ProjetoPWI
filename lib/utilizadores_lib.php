@@ -1,5 +1,10 @@
 <?php
 
+/**
+ *Lê os utilizadores de um ficheiro de texto, organiza os dados em um array associativo e retorna o array
+ *
+ * @return array
+ */
 function lerUtilizadores(): array
 {
     // abrir o ficheiro no directorio superior data/utilizadores
@@ -28,6 +33,11 @@ function lerUtilizadores(): array
     return $utilizadores;
 }
 
+/**
+ *Calcula o próximo ID do utilizador com base no último ID presente no array de utilizadores
+ *
+ * @return integer
+ */
 function obtemProximoIdUser(): int
 {
     $utilizadores = lerUtilizadores();
@@ -39,6 +49,13 @@ function obtemProximoIdUser(): int
     return $utilizadores[count($utilizadores)-1]['idUtilizador'] + 1;
 }
 
+/**
+ * Valida o utilizador e a palavra-passe, iniciando a sessão e configurando um cookie em caso de sucesso
+ *
+ * @param string $username
+ * @param string $password
+ * @return array|boolean
+ */
 function validaUtilizador(string $username, string $password): array|bool
 {
     // abrir o ficheiro no directorio superior data/utilizadores
@@ -63,6 +80,11 @@ function validaUtilizador(string $username, string $password): array|bool
     return false;
 }
 
+/**
+ * Valida se a sessão está ativa ou tenta restaurá-la usando informações de cookies
+ *
+ * @return boolean
+ */
 function validaSessao(): bool
 {
     @session_start();
@@ -79,6 +101,11 @@ function validaSessao(): bool
     return true;
 }
 
+/**
+ * Termina a sessão e remove o cookie associado
+ *
+ * @return boolean
+ */
 function terminaSessao(): bool
 {
     if (!validaSessao()) {
@@ -92,6 +119,12 @@ function terminaSessao(): bool
     return true;
 }
 
+/**
+ * Obtém os dados de um utilizador específico pelo nome de utilizador
+ *
+ * @param string $username
+ * @return array|boolean
+ */
 function obtemUtilizador(string $username): array|bool
 {
     $utilizadores = lerUtilizadores();
@@ -104,8 +137,21 @@ function obtemUtilizador(string $username): array|bool
     return false;
 }
 
+/**
+ * Adiciona um novo utilizador ao ficheiro de utilizadores
+ *
+ * @param string $username
+ * @param string $nome
+ * @param string $password
+ * @return array|boolean
+ */
 function adicionarUtilizador(string $username, string $nome, string $password): array|bool
 {
+        // Validar palavra-passe
+    if (!verificarPassword($password)) {
+        return false; // Palavra-passe inválida
+    }
+
     if (obtemUtilizador($username) !== false) {
         return false;
     }
@@ -134,6 +180,15 @@ function adicionarUtilizador(string $username, string $nome, string $password): 
     ];
 }
 
+/**
+ * Modifica os dados de um utilizador específico, incluindo palavra-passe e situação
+ *
+ * @param string $username
+ * @param string $nome
+ * @param string $password
+ * @param integer $situacao
+ * @return boolean
+ */
 function modificarUtilizador(string $username, string $nome, string $password, int $situacao): bool
 {
     $utilizadores = lerUtilizadores();
@@ -141,6 +196,10 @@ function modificarUtilizador(string $username, string $nome, string $password, i
         if ($utilizador['username'] == $username) {
             $utilizadores[$pos]['nome'] = $nome;
             if ($password != '') {
+                 // Validar palavra-passe antes de alterar
+                if (!verificarPassword($password)) {
+                    return false; // Palavra-passe inválida
+                }
                 $utilizadores[$pos]['password'] = password_hash($password, PASSWORD_DEFAULT);
             }
             $utilizadores[$pos]['situacao'] = $situacao;
@@ -152,6 +211,12 @@ function modificarUtilizador(string $username, string $nome, string $password, i
     return false;
 }
 
+/**
+ * Escreve por cima dos dados anteriormente no ficheiro de utilizadores com os dados fornecidos
+ *
+ * @param array $utilizadores
+ * @return boolean
+ */
 function escreverUtilizadores(array $utilizadores): bool
 {
     // abrir o ficheiro no directorio superior data/utilizadores
@@ -175,4 +240,24 @@ function escreverUtilizadores(array $utilizadores): bool
 
     fclose($futilizadores);
     return true;
+}
+
+/**
+ * Valida os critérios de criar e alterar uma palavra-passe
+ *
+ * @param string $password
+ * @return boolean
+ */
+function verificarPassword(string $password): bool
+{
+    // Verifica se a palavra-passe tem pelo menos 8 caracteres, 
+    $temTamanhoMinimo = strlen($password) >= 8;
+    // uma letra maiúscula,
+    $temMaiuscula = preg_match('/[A-Z]/', $password);
+    // uma letra minúscula
+    $temMinuscula = preg_match('/[a-z]/', $password);
+    // e um número
+    $temNumero = preg_match('/[0-9]/', $password);
+
+    return $temTamanhoMinimo && $temMaiuscula && $temMinuscula && $temNumero;
 }
