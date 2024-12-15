@@ -147,7 +147,17 @@ function obtemUtilizador(string $username): array|bool
  */
 function adicionarUtilizador(string $username, string $nome, string $password): array|bool
 {
-        // Validar palavra-passe
+    // Validar que o username contém apenas letras
+    if (!preg_match('/^[a-zA-Z]+$/', $username)) {
+        return false; // Username inválido
+    }
+
+    // Verificar se o username já existe
+    if (obtemUtilizador($username) !== false) {
+        return false; // Username já em uso
+    }
+
+    // Validar palavra-passe
     if (!verificarPassword($password)) {
         return false; // Palavra-passe inválida
     }

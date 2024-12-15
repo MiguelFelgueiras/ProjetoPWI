@@ -10,7 +10,7 @@ include_once 'lib' . DIRECTORY_SEPARATOR . 'socios_lib.php';
  */
 function lerCobrancas(string $pesquisa = ''): array
 {
-    // abrir o ficheiro no directorio superior data/cobrancas
+    // abrir o ficheiro no directorio superior data/cobrancas no modo de leitura
     $fcobrancas = fopen(
             "data"
             . DIRECTORY_SEPARATOR
